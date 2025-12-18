@@ -1,200 +1,223 @@
 <!DOCTYPE html>
+<!-- =============================================================
+     INDEX.HTML — RESPONSIVE (ALL DEVICES)
+     Tutor: Aydin Mahmoudi
+     Purpose: Full IELTS Tutor Website (Home Page)
+     Notes:
+     • ONE codebase for all devices (phone, tablet, desktop)
+     • Responsiveness handled via CSS media queries (not mobile-only)
+     • Very long, explicit structure (500+ lines when combined with CSS & JS)
+     • Settings panel, animations hooks, accessibility ready
+============================================================== -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aydin Mahmoud | IELTS Academic Tutor</title>
+  <title>Aydin Mahmoudi | Academic IELTS Tutor</title>
 
-  <!-- ======================================================
-       NOTE ABOUT LOGO (READ THIS)
-       ------------------------------------------------------
-       BEFORE THE SITE IS FINISHED:
-       You will need to send the logo image.
-       Expected path:
-       /assets/logo.png
+  <!-- =============================================================
+       SEO BASICS
+  ============================================================= -->
+  <meta name="description" content="Aydin Mahmoudi is an Academic IELTS tutor specializing in Academic Writing and Academic Speaking, teaching English based on personal psychology." />
+  <meta name="keywords" content="IELTS Tutor, Academic IELTS, IELTS Writing, IELTS Speaking, Aydin Mahmoudi" />
 
-       Format: PNG or SVG preferred
-       Transparent background recommended
-
-       I WILL REMIND YOU AGAIN before final styling.
-  ======================================================= -->
-
-  <!-- ======================================================
-       LINKED FILES (WILL EXIST IN FINAL STRUCTURE)
-  ======================================================= -->
+  <!-- =============================================================
+       STYLESHEET (RESPONSIVE FOR ALL DEVICES)
+  ============================================================= -->
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- ======================================================
+  <!-- =============================================================
        FONTS
-  ======================================================= -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  ============================================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 </head>
 
 <body>
 
-  <!-- ======================================================
-       LOADING SCREEN
-  ======================================================= -->
-  <div id="loader">
-    <div class="loader-inner">
-      <span class="loader-text">Preparing Your IELTS Journey</span>
+<!-- =============================================================
+     GLOBAL LOADER
+============================================================== -->
+<div id="global-loader">
+  <div class="loader-content">
+    <span class="loader-title">Find Your Personal IELTS Journey</span>
+    <span class="loader-sub">Loading experience…</span>
+  </div>
+</div>
+
+<!-- =============================================================
+     HEADER / NAVBAR
+============================================================== -->
+<header id="main-header">
+  <div class="header-wrapper">
+
+    <!-- LOGO AREA -->
+    <div class="logo-area">
+      <!-- LOGO PLACEHOLDER (SEND LOGO BEFORE CSS FINALIZATION) -->
+      <img src="assets/logo.png" alt="Aydin Mahmoudi Logo" class="logo-img" />
+      <span class="logo-text">Aydin Mahmoudi</span>
+    </div>
+
+    <!-- NAVIGATION LINKS -->
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+
+    <!-- MOBILE MENU BUTTON (JS CONTROLLED) -->
+    <button id="nav-toggle" aria-label="Toggle menu">☰</button>
+
+  </div>
+</header>
+
+<!-- =============================================================
+     HERO SECTION
+============================================================== -->
+<section id="hero-section">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-inner">
+
+    <h1 class="hero-heading">
+      Find Your Personal IELTS Journey
+    </h1>
+
+    <p class="hero-description">
+      Personalized Academic IELTS preparation with <strong>Aydin Mahmoudi</strong>.
+      Teaching English based on your personal psychology, learning behavior,
+      confidence profile, communication habits, and real IELTS band descriptors —
+      not generic memorization-based formulas.
+    </p>
+
+    <div class="hero-actions">
+      <a href="contact.html" class="btn primary">Start Your Journey</a>
+      <a href="about.html" class="btn secondary">Meet Your Tutor</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- =============================================================
+     CORE PHILOSOPHY SECTION
+============================================================== -->
+<section id="philosophy-section">
+  <div class="section-container">
+
+    <h2 class="section-title">Teaching English Based on Your Personal Psychology</h2>
+
+    <p class="section-text">
+      IELTS is not simply a language exam. It is an assessment of how effectively
+      you organize academic ideas, manage time pressure, control grammatical
+      accuracy, and express meaning clearly under exam conditions. Because of this,
+      Aydin Mahmoudi’s teaching philosophy focuses first on the student — not the textbook.
+    </p>
+
+    <p class="section-text">
+      Every learner has a unique cognitive and emotional structure. Some students
+      require strong frameworks, others need flexibility. Some struggle with
+      confidence, others with organization. Lessons are adapted to your personal
+      psychology so progress becomes natural, efficient, and sustainable.
+    </p>
+
+  </div>
+</section>
+
+<!-- =============================================================
+     COURSES OVERVIEW SECTION
+============================================================== -->
+<section id="courses-section">
+  <div class="section-container">
+
+    <h2 class="section-title">What You Will Learn</h2>
+
+    <div class="courses-grid">
+
+      <article class="course-card">
+        <h3>Academic IELTS Writing</h3>
+        <p>
+          Master Task 1 and Task 2 through advanced structure models, logical idea
+          generation systems, paragraph cohesion strategies, grammatical accuracy
+          control, and examiner-level feedback designed for Band 7–9 performance.
+        </p>
+      </article>
+
+      <article class="course-card">
+        <h3>Academic IELTS Speaking</h3>
+        <p>
+          Develop fluency, coherent expansion, pronunciation clarity, lexical
+          flexibility, and confidence through real examiner-style questions and
+          psychology-driven speaking drills.
+        </p>
+      </article>
+
+      <article class="course-card">
+        <h3>Advanced Academic Grammar</h3>
+        <p>
+          Learn how grammar truly affects band scores and how to use complex sentence
+          structures accurately without risking band-limiting mistakes.
+        </p>
+      </article>
+
+      <article class="course-card">
+        <h3>Vocabulary & Band 7–9 Strategies</h3>
+        <p>
+          Build topic-based academic vocabulary, paraphrasing mastery, collocation
+          awareness, and strategic word choice without memorization overload or
+          unnatural language use.
+        </p>
+      </article>
+
     </div>
   </div>
+</section>
 
-  <!-- ======================================================
-       NAVBAR
-  ======================================================= -->
-  <header id="navbar">
-    <div class="nav-container">
+<!-- =============================================================
+     VALUE / EXPERIENCE SECTION
+============================================================== -->
+<section id="value-section">
+  <div class="section-container">
 
-      <!-- LOGO AREA -->
-      <div class="nav-logo">
-        <!-- LOGO WILL BE INSERTED HERE -->
-        <img src="assets/logo.png" alt="Aydin Mahmoud Logo" />
-        <span class="brand-name">Aydin Mahmoud</span>
-      </div>
+    <h2 class="section-title">Why This Approach Works</h2>
 
-      <!-- NAV LINKS -->
-      <nav class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+    <ul class="value-list">
+      <li>Fully personalized learning paths instead of one-size-fits-all courses</li>
+      <li>Psychology-driven confidence and performance building</li>
+      <li>Examiner-focused scoring logic and feedback</li>
+      <li>Academic-level thinking and expression development</li>
+      <li>Clear progress tracking and realistic band improvement</li>
+    </ul>
 
-    </div>
-  </header>
+  </div>
+</section>
 
-  <!-- ======================================================
-       HERO SECTION
-  ======================================================= -->
-  <section id="hero">
-    <div class="hero-bg"></div>
+<!-- =============================================================
+     FINAL CALL TO ACTION
+============================================================== -->
+<section id="final-cta-section">
+  <div class="cta-box">
+    <h2>Ready to Improve Your IELTS Score?</h2>
+    <p>
+      Your preparation should be as personal as your academic goals.
+      Start a structured, psychology-based Academic IELTS journey today.
+    </p>
+    <a href="contact.html" class="btn primary large">Contact Aydin Mahmoudi</a>
+  </div>
+</section>
 
-    <div class="hero-content">
+<!-- =============================================================
+     SETTINGS (GEAR ICON + PANEL)
+============================================================== -->
+<button id="settings-toggle" aria-label="Settings">⚙️</button>
 
-      <h1 class="hero-title">
-        Find Your Personal IELTS Journey
-      </h1>
+<div id="settings-panel">
+  <h4>Settings</h4>
 
-      <p class="hero-subtitle">
-        Personalized academic IELTS preparation with <strong>Aydin Mahmoud</strong> —
-        teaching English based on your personal psychology, learning style, strengths,
-        weaknesses, goals, motivation patterns, and real IELTS band descriptors.
-      </p>
+  <button onclick="toggleTheme()">Dark / Light Mode</button>
 
-      <div class="hero-cta">
-        <a href="contact.html" class="btn-primary">Start Your Journey</a>
-        <a href="about.html" class="btn-secondary">Meet Your Tutor</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ======================================================
-       PHILOSOPHY SECTION
-  ======================================================= -->
-  <section id="philosophy">
-    <div class="section-container">
-
-      <h2 class="section-title">A Different Way of Teaching IELTS</h2>
-
-      <p class="section-description">
-        IELTS is not just an English test — it is a psychological exam that measures how
-        well you can perform under pressure, structure ideas, think critically, and
-        express meaning clearly in academic contexts. That is why Aydin Mahmoud’s
-        teaching philosophy is built around understanding <em>you</em> before teaching
-        the language.
-      </p>
-
-      <p class="section-description">
-        Every student has a different cognitive style. Some think visually, some think
-        structurally, some rely on intuition, while others depend on logic. This program
-        adapts academic writing and speaking strategies specifically to how your brain
-        processes information, ensuring faster progress and long-term improvement.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- ======================================================
-       COURSES SECTION
-  ======================================================= -->
-  <section id="courses">
-    <div class="section-container">
-
-      <h2 class="section-title">What You Will Learn</h2>
-
-      <div class="courses-grid">
-
-        <div class="course-card">
-          <h3>Academic IELTS Writing</h3>
-          <p>
-            Master Task 1 and Task 2 with examiner-level feedback, advanced structure
-            frameworks, band 8–9 lexical resource control, grammar accuracy, idea
-            development, and coherence techniques designed specifically for academic
-            contexts.
-          </p>
-        </div>
-
-        <div class="course-card">
-          <h3>Academic IELTS Speaking</h3>
-          <p>
-            Develop natural fluency, logical responses, topic expansion skills,
-            pronunciation clarity, and confidence through real examiner-style questions
-            and psychological confidence-building methods.
-          </p>
-        </div>
-
-        <div class="course-card">
-          <h3>Advanced Academic Grammar</h3>
-          <p>
-            Learn how grammar actually affects band scores. Focus on accuracy, range,
-            sentence control, complex structures, and avoiding common band-limiting
-            mistakes.
-          </p>
-        </div>
-
-        <div class="course-card">
-          <h3>Vocabulary & Band 7–9 Strategies</h3>
-          <p>
-            Build topic-based academic vocabulary, paraphrasing mastery, collocation
-            awareness, and strategic word choice without memorization overload.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================================
-       CALL TO ACTION
-  ======================================================= -->
-  <section id="final-cta">
-    <div class="cta-container">
-      <h2>Ready to Transform Your IELTS Performance?</h2>
-      <p>
-        Whether your goal is Band 7, 8, or 9, your preparation should be as unique as you
-        are. Begin a structured, psychological, and results-driven IELTS journey today.
-      </p>
-      <a href="contact.html" class="btn-primary large">Contact Aydin Mahmoud</a>
-    </div>
-  </section>
-
-  <!-- ======================================================
-       SETTINGS BUTTON (GEAR ICON)
-  ======================================================= -->
-  <button id="settings-btn">⚙️</button>
-
-  <!-- ======================================================
-       SETTINGS PANEL
-  ======================================================= -->
-  <div id="settings-panel">
-    <h4>Settings</h4>
-
-    <button onclick="toggleTheme()">Dark / Light Mode</button>
-
+  <label>
+    Language
     <select id="language-select">
       <option>English</option>
       <option>Türkçe</option>
@@ -203,22 +226,22 @@
       <option>Español</option>
       <option>العربية</option>
     </select>
+  </label>
+</div>
 
-  </div>
+<!-- =============================================================
+     FOOTER
+============================================================== -->
+<footer id="main-footer">
+  <p>© 2025 Aydin Mahmoudi — Academic IELTS Tutor</p>
+</footer>
 
-  <!-- ======================================================
-       FOOTER
-  ======================================================= -->
-  <footer>
-    <p>© 2025 Aydin Mahmoud — Academic IELTS Tutor</p>
-  </footer>
-
-  <!-- ======================================================
-       SCRIPTS
-  ======================================================= -->
-  <script src="js/main.js"></script>
-  <script src="js/animations.js"></script>
-  <script src="js/settings.js"></script>
+<!-- =============================================================
+     JAVASCRIPT FILES
+============================================================== -->
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/settings.js"></script>
 
 </body>
 </html>
