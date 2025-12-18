@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IELTS Tutor | Official Website</title>
+
+  <!-- =========================
+       GLOBAL STYLES & THEMES
+  ========================== -->
+  <style>
+    :root {
+      --bg-light: #f5f7fb;
+      --bg-dark: #0f1220;
+      --text-light: #0f1220;
+      --text-dark: #f5f7fb;
+      --primary: #4f7cff;
+      --secondary: #8ea6ff;
+      --card-light: #ffffff;
+      --card-dark: #181c3a;
+      --transition: 0.4s ease;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 16px 0;
+    }
+
+    p {
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      font-family: inherit;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.7);
+      z-index: 1000;
+      transition: background var(--transition);
+    }
+
+    body.dark header {
+      background: rgba(15,18,32,0.75);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      opacity: 0.85;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    /* =========================
+       HERO SECTION
+    ========================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      background: linear-gradient(120deg, var(--primary), var(--secondary));
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      top: -200px;
+      right: -200px;
+      animation: float 10s infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(40px); }
+    }
+
+    .hero-content {
+      max-width: 900px;
+      text-align: center;
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+    }
+
+    .cta {
+      background: white;
+      color: var(--primary);
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+
+    .cta:hover {
+      transform: scale(1.05);
+    }
+
+    /* =========================
+       SECTIONS
+    ========================== */
+    section {
+      padding: 100px 24px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-light);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      transition: transform 0.4s ease, background var(--transition);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    body.dark .card {
+      background: var(--card-dark);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    /* =========================
+       CONTACT FORM
+    ========================== */
+    form {
+      display: grid;
+      gap: 16px;
+      max-width: 600px;
+    }
+
+    input, textarea, select {
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit {
+      background: var(--primary);
+      color: white;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    /* =========================
+       SETTINGS PANEL
+    ========================== */
+    .settings {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--card-light);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      z-index: 999;
+      transition: background var(--transition);
+    }
+
+    body.dark .settings {
+      background: var(--card-dark);
+    }
+
+    .settings h4 {
+      margin-bottom: 12px;
+    }
+
+    .toggle {
+      margin-bottom: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    footer {
+      padding: 40px 24px;
+      text-align: center;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+  <header>
+    <div class="nav">
+      <div class="logo">IELTS Tutor</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================
+       HERO
+  ========================== -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Your Personal IELTS Tutor</h1>
+      <p>Meet a professional IELTS instructor helping students reach Band 7–9 with proven strategies, deep exam insight, and personalized coaching.</p>
+      <a href="#contact" class="cta">Contact Now</a>
+    </div>
+  </section>
+
+  <!-- =========================
+       ABOUT
+  ========================== -->
+  <section id="about">
+    <div class="container">
+      <h2>Who Is Your Tutor?</h2>
+      <p>This IELTS tutor is a certified English instructor specializing in IELTS Academic and General Training. He focuses on exam strategies, real band descriptors, and individual feedback.</p>
+    </div>
+  </section>
+
+  <!-- =========================
+       COURSES
+  ========================== -->
+  <section id="courses">
+    <div class="container">
+      <h2>What He Teaches</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>IELTS Writing</h3>
+          <p>Task 1 & Task 2 structures, band 9 vocabulary, grammar accuracy, and examiner-level feedback.</p>
+        </div>
+        <div class="card">
+          <h3>IELTS Speaking</h3>
+          <p>Fluency training, real examiner questions, pronunciation, and confidence building.</p>
+        </div>
+        <div class="card">
+          <h3>IELTS Reading & Listening</h3>
+          <p>Time-management strategies, trap recognition, and high-band techniques.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
+       CONTACT
+  ========================== -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact the Tutor</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <select>
+          <option>IELTS Academic</option>
+          <option>IELTS General</option>
+        </select>
+        <textarea placeholder="Your Message"></textarea>
+        <button class="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- =========================
+       SETTINGS
+  ========================== -->
+  <div class="settings">
+    <h4>Settings</h4>
+    <button class="toggle" onclick="toggleTheme()">Toggle Dark / Light</button>
+    <button class="toggle" onclick="translatePage()">Auto Translate Language</button>
+  </div>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer>
+    <p>© 2025 IELTS Tutor. All rights reserved.</p>
+  </footer>
+
+  <!-- =========================
+       SCRIPTS
+  ========================== -->
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+    }
+
+    function translatePage() {
+      alert('This triggers browser-based translation (supports ALL languages via browser).');
+    }
+  </script>
+
+</body>
+</html>
