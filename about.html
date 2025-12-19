@@ -1,212 +1,112 @@
 <!DOCTYPE html>
 <!-- =============================================================
-     ABOUT.HTML — RESPONSIVE (ALL DEVICES)
-     Tutor: Aydin Mahmoudi
-     Purpose: About Page — Identity, Philosophy, Experience
-     Notes:
-     • Single codebase for phone, tablet, desktop
-     • Large readable text, accessibility-friendly
-     • Animation hooks included (JS + CSS)
+     ABOUT.HTML — PROFESSIONAL IELTS TUTOR WEBSITE
+     Page: About the Tutor
 ============================================================== -->
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Aydin Mahmoudi | Academic IELTS Tutor</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO -->
-  <meta name="description" content="Learn who Aydin Mahmoudi is, his teaching philosophy, experience, and psychology-based approach to Academic IELTS Writing and Speaking." />
-  <meta name="keywords" content="Aydin Mahmoudi, IELTS Tutor, Academic IELTS, IELTS Writing, IELTS Speaking" />
+  <title>About Aydin Mahmoudi | IELTS Tutor</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <meta name="description" content="Learn about Aydin Mahmoudi, an Academic and General IELTS tutor specializing in psychology-based language learning.">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- ================= FONTS ================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- ================= STYLES ================= -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- =============================================================
-     HEADER (REUSED STRUCTURE)
-============================================================== -->
+<!-- ================= HEADER ================= -->
 <header id="main-header">
   <div class="header-wrapper">
 
     <div class="logo-area">
-      <img src="assets/logo.png" alt="Aydin Mahmoudi Logo" class="logo-img" />
+      <img src="assets/logo.png" alt="Aydin Mahmoudi Logo" class="logo-img">
       <span class="logo-text">Aydin Mahmoudi</span>
     </div>
 
     <nav class="main-nav">
       <a href="index.html" class="nav-link">Home</a>
       <a href="about.html" class="nav-link active">About</a>
+      <a href="courses.html" class="nav-link">Courses</a>
       <a href="contact.html" class="nav-link">Contact</a>
-     <a href="courses.html" class="nav-link">Courses</a>
     </nav>
 
-    <button id="nav-toggle" aria-label="Toggle menu">☰</button>
-
+    <button id="nav-toggle">☰</button>
   </div>
 </header>
 
-<!-- =============================================================
-     PAGE HERO
-============================================================== -->
-<section id="about-hero">
-  <div class="about-hero-overlay"></div>
-
-  <div class="about-hero-inner">
-    <h1>Who Is Aydin Mahmoudi?</h1>
-    <p>
-      Academic IELTS preparation is not about shortcuts or memorized templates.
-      It is about understanding how language, logic, and psychology work together.
-    </p>
-  </div>
-</section>
-
-<!-- =============================================================
-     IDENTITY SECTION
-============================================================== -->
-<section class="about-section">
+<!-- ================= ABOUT SECTION ================= -->
+<section id="about-main">
   <div class="section-container">
 
-    <h2 class="section-title">Professional Identity</h2>
+    <h1 class="section-title">
+      Meet Your Tutor
+    </h1>
 
-    <p class="section-text">
-      Aydin Mahmoudi is an Academic IELTS tutor specializing in Academic Writing and
-      Academic Speaking. His teaching focuses on helping students reach higher bands
-      by understanding the real assessment logic behind the IELTS exam rather than
-      relying on memorization or surface-level techniques.
-    </p>
+    <div class="about-grid">
 
-    <p class="section-text">
-      Through structured analysis, examiner-based criteria, and psychology-aware
-      instruction, students learn how to express ideas clearly, accurately, and
-      confidently under real exam conditions.
-    </p>
+      <!-- ================= IMAGE ================= -->
+      <div class="about-image">
+        <img src="assets/tutor.png" alt="Aydin Mahmoudi - IELTS Tutor">
+      </div>
 
-  </div>
-</section>
+      <!-- ================= TEXT ================= -->
+      <div class="about-text">
 
-<!-- =============================================================
-     PHILOSOPHY SECTION
-============================================================== -->
-<section class="about-section alt">
-  <div class="section-container">
+        <p>
+          My name is <strong>Aydin Mahmoudi</strong>, and I specialize in
+          <strong>Academic IELTS</strong>, <strong>General IELTS</strong>,
+          <strong>Academic Writing</strong>, and <strong>Speaking Skills</strong>.
+          My teaching approach is based on psychology, structure, and real
+          examiner expectations rather than short-term memorization.
+        </p>
 
-    <h2 class="section-title">Teaching Philosophy</h2>
+        <p>
+          Over the years, I have worked with students from diverse academic and
+          professional backgrounds. Many struggle not because they lack
+          intelligence, but because traditional methods fail to match how their
+          minds process language.
+        </p>
 
-    <p class="section-text">
-      Teaching English based on personal psychology is the foundation of Aydin
-      Mahmoudi’s approach. Every learner processes information differently.
-      Understanding a student’s cognitive style, confidence level, and stress
-      response allows instruction to be adapted for maximum effectiveness.
-    </p>
+        <p>
+          Language is a habit more than it is a science. Once thinking patterns
+          change, progress becomes consistent and natural. My role is to guide
+          you through that transformation with clarity, structure, and confidence.
+        </p>
 
-    <p class="section-text">
-      Instead of forcing every student into the same structure, lessons are shaped
-      around how the student thinks, plans, and communicates ideas. This results in
-      faster progress, deeper understanding, and long-term skill development.
-    </p>
+        <!-- ================= CONTACT LINKS ================= -->
+        <div class="about-contact">
 
-  </div>
-</section>
+          <a href="https://wa.me/989396181226" target="_blank" class="btn primary">
+            WhatsApp
+          </a>
 
-<!-- =============================================================
-     EXPERIENCE SECTION
-============================================================== -->
-<section class="about-section">
-  <div class="section-container">
+          <a href="mailto:aydin.miay@gmail.com" class="btn secondary">
+            Email
+          </a>
 
-    <h2 class="section-title">Experience & Expertise</h2>
+        </div>
 
-    <ul class="experience-list">
-      <li>Academic IELTS Writing Task 1 & Task 2 mastery</li>
-      <li>Academic IELTS Speaking fluency and coherence</li>
-      <li>Grammar accuracy training that builds clarity, control, and confidence for higher band scores</li>
-      <li>Advanced academic vocabulary usage</li>
-      <li>Examiner-style feedback and score breakdown</li>
-    </ul>
-
-    <p class="section-text">
-      Students are guided through real IELTS-style tasks, detailed corrections,
-      and clear explanations of what improves scores and what limits progress.
-    </p>
+      </div>
+    </div>
 
   </div>
 </section>
 
-<!-- =============================================================
-     METHODOLOGY SECTION
-============================================================== -->
-<section class="about-section alt">
-  <div class="section-container">
-
-    <h2 class="section-title">Methodology</h2>
-
-    <p class="section-text">
-      The methodology used combines academic structure, controlled practice, and
-      reflective feedback. Each lesson builds on previous understanding, ensuring
-      consistent improvement rather than random progress.
-    </p>
-
-    <p class="section-text">
-      Students learn how to analyze questions, plan responses efficiently, and
-      produce language that meets examiner expectations while sounding natural
-      and confident.
-    </p>
-
-  </div>
-</section>
-
-<!-- =============================================================
-     CTA SECTION
-============================================================== -->
-<section id="about-cta">
-  <div class="cta-box">
-    <h2>Start Your Personal IELTS Journey</h2>
-    <p>
-      If you want structured, psychology-aware IELTS preparation,
-      this is where your journey begins.
-    </p>
-    <a href="contact.html" class="btn primary large">Contact Aydin Mahmoudi</a>
-  </div>
-</section>
-
-<!-- =============================================================
-     SETTINGS
-============================================================== -->
-<button id="settings-toggle" aria-label="Settings">⚙️</button>
-
-<div id="settings-panel">
-  <h4>Settings</h4>
-  <button onclick="toggleTheme()">Dark / Light Mode</button>
-  <label>
-    Language
-    <select id="language-select">
-      <option>English</option>
-      <option>Türkçe</option>
-      <option>Deutsch</option>
-      <option>Français</option>
-      <option>Español</option>
-      <option>العربية</option>
-    </select>
-  </label>
-</div>
-
-<!-- =============================================================
-     FOOTER
-============================================================== -->
+<!-- ================= FOOTER ================= -->
 <footer id="main-footer">
-  <p>© 2025 Aydin Mahmoudi — Academic IELTS Tutor</p>
+  <p>© 2025 Aydin Mahmoudi — Academic & General IELTS Tutor</p>
 </footer>
 
-<!-- =============================================================
-     JAVASCRIPT
-============================================================== -->
+<!-- ================= SCRIPTS ================= -->
 <script src="js/main.js"></script>
 <script src="js/animations.js"></script>
 <script src="js/settings.js"></script>
