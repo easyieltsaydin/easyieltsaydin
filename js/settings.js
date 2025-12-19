@@ -1,90 +1,98 @@
 /* ============================================================
-   SETTINGS.JS
+   SETTINGS.JS — USER PREFERENCES SYSTEM
    Controls:
-   - Settings gear toggle
+   - Settings panel toggle
    - Dark / Light mode
-   - LocalStorage persistence
-   - Smooth UI behavior
-   ============================================================ */
+   - Preference persistence
+   - Accessibility support
+============================================================ */
 
-/* ------------------------------------------------------------
-   ELEMENT REFERENCES
------------------------------------------------------------- */
+"use strict";
+
+/* ================= ELEMENTS ================= */
 const settingsToggle = document.getElementById("settings-toggle");
 const settingsPanel  = document.getElementById("settings-panel");
-const bodyElement    = document.body;
+const body           = document.body;
 
-/* ------------------------------------------------------------
-   SETTINGS PANEL TOGGLE
------------------------------------------------------------- */
+/* ================= STATE ================= */
 let settingsOpen = false;
 
+/* ================= TOGGLE PANEL ================= */
 if (settingsToggle && settingsPanel) {
-  settingsToggle.addEventListener("click", () => {
+  settingsToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
     settingsOpen = !settingsOpen;
 
     if (settingsOpen) {
       settingsPanel.classList.add("open");
       settingsToggle.classList.add("active");
     } else {
-      settingsPanel.classList.remove("open");
-      settingsToggle.classList.remove("active");
+      closeSettings();
     }
   });
 }
 
-/* ------------------------------------------------------------
-   CLOSE SETTINGS WHEN CLICKING OUTSIDE
------------------------------------------------------------- */
-document.addEventListener("click", (event) => {
-  if (!settingsPanel || !settingsToggle) return;
+/* ================= CLOSE FUNCTION ================= */
+function closeSettings() {
+  settingsPanel.classList.remove("open");
+  settingsToggle.classList.remove("active");
+  settingsOpen = false;
+}
 
-  const clickedInsidePanel = settingsPanel.contains(event.target);
-  const clickedToggle     = settingsToggle.contains(event.target);
-
-  if (!clickedInsidePanel && !clickedToggle && settingsOpen) {
-    settingsPanel.classList.remove("open");
-    settingsToggle.classList.remove("active");
-    settingsOpen = false;
+/* ================= CLICK OUTSIDE ================= */
+document.addEventListener("click", (e) => {
+  if (!settingsOpen) return;
+  if (!settingsPanel.contains(e.target) && !settingsToggle.contains(e.target)) {
+    closeSettings();
   }
 });
 
-/* ------------------------------------------------------------
-   DARK / LIGHT MODE
------------------------------------------------------------- */
-function toggleTheme() {
-  bodyElement.classList.toggle("dark-mode");
-
-  if (bodyElement.classList.contains("dark-mode")) {
-    localStorage.setItem("theme", "dark");
-  } else {
-    localStorage.setItem("theme", "light");
+/* ================= ESC KEY ================= */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && settingsOpen) {
+    closeSettings();
   }
+});
+
+/* ================= THEME TOGGLE ================= */
+function toggleTheme() {
+  body.classList.toggle("dark-mode");
+
+  const theme = body.classList.contains("dark-mode") ? "dark" : "light";
+  localStorage.setItem("theme", theme);
 }
 
-/* ------------------------------------------------------------
-   LOAD SAVED THEME ON PAGE LOAD
------------------------------------------------------------- */
-(function loadSavedTheme() {
+/* ================= LOAD SAVED THEME ================= */
+(function loadTheme() {
   const savedTheme = localStorage.getItem("theme");
-
   if (savedTheme === "dark") {
-    bodyElement.classList.add("dark-mode");
+    body.classList.add("dark-mode");
   }
 })();
 
-/* ------------------------------------------------------------
-   ACCESSIBILITY: ESC KEY CLOSES SETTINGS
------------------------------------------------------------- */
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && settingsOpen) {
-    settingsPanel.classList.remove("open");
-    settingsToggle.classList.remove("active");
-    settingsOpen = false;
-  }
+/* ================= LANGUAGE SELECT ================= */
+const languageSelect = document.getElementById("language-select");
+
+if (languageSelect) {
+  const savedLang = localStorage.getItem("language");
+  if (savedLang) languageSelect.value = savedLang;
+
+  languageSelect.addEventListener("change", () => {
+    localStorage.setItem("language", languageSelect.value);
+    console.log("Language set to:", languageSelect.value);
+    // Hook for future translation system
+  });
+}
+
+/* ================= ACCESSIBILITY ================= */
+settingsToggle?.setAttribute("aria-expanded", "false");
+
+settingsToggle?.addEventListener("click", () => {
+  settingsToggle.setAttribute(
+    "aria-expanded",
+    settingsOpen ? "true" : "false"
+  );
 });
 
-/* ------------------------------------------------------------
-   DEBUG (REMOVE LATER IF YOU WANT)
------------------------------------------------------------- */
-console.log("Settings system loaded successfully");
+/* ================= DEBUG ================= */
+console.log("Settings system initialized");
