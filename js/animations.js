@@ -1,148 +1,82 @@
 /* ============================================================
-   ANIMATIONS.JS
+   ANIMATIONS.JS — VISUAL POLISH & INTERACTIONS
    Purpose:
-   - Page load animation
    - Scroll reveal animations
-   - Section fade & slide
-   - Card stagger effects
-   - Performance-friendly (mobile + desktop)
-   ============================================================ */
+   - Fade / slide effects
+   - Subtle professional motion
+   - Performance-safe
+============================================================ */
 
-/* ------------------------------------------------------------
-   GLOBAL LOADER (PAGE LOAD)
------------------------------------------------------------- */
-window.addEventListener("load", () => {
-  const loader = document.getElementById("global-loader");
+"use strict";
 
-  if (loader) {
-    loader.style.opacity = "0";
-    loader.style.pointerEvents = "none";
-
-    setTimeout(() => {
-      loader.style.display = "none";
-    }, 700);
-  }
-});
-
-/* ------------------------------------------------------------
-   INTERSECTION OBSERVER SETUP
------------------------------------------------------------- */
-const observerOptions = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 0.15
+/* ================= CONFIG ================= */
+const ANIMATION_CONFIG = {
+  threshold: 0.15,
+  rootMargin: "0px 0px -60px 0px"
 };
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("revealed");
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-/* ------------------------------------------------------------
-   ELEMENTS TO ANIMATE
------------------------------------------------------------- */
-const revealElements = document.querySelectorAll(
-  "section, .course-card, .value-list li, .hero-inner, .cta-box"
-);
-
-revealElements.forEach(el => {
-  el.classList.add("reveal");
-  revealObserver.observe(el);
+/* ================= SCROLL REVEAL ================= */
+document.addEventListener("DOMContentLoaded", () => {
+  initScrollReveal();
 });
 
-/* ------------------------------------------------------------
-   STAGGER ANIMATION FOR COURSE CARDS
------------------------------------------------------------- */
-const courseCards = document.querySelectorAll(".course-card");
+/* ================= INIT ================= */
+function initScrollReveal() {
+  const elements = document.querySelectorAll(
+    ".section-title, .section-text, .course-card, .value-list li, .cta-box, .about-image, .about-text"
+  );
 
-courseCards.forEach((card, index) => {
-  card.style.transitionDelay = `${index * 120}ms`;
-});
-
-/* ------------------------------------------------------------
-   STAGGER ANIMATION FOR VALUE LIST
------------------------------------------------------------- */
-const valueItems = document.querySelectorAll(".value-list li");
-
-valueItems.forEach((item, index) => {
-  item.style.transitionDelay = `${index * 90}ms`;
-});
-
-/* ------------------------------------------------------------
-   HEADER SCROLL EFFECT
------------------------------------------------------------- */
-let lastScrollY = window.scrollY;
-const header = document.getElementById("main-header");
-
-window.addEventListener("scroll", () => {
-  if (!header) return;
-
-  if (window.scrollY > lastScrollY && window.scrollY > 120) {
-    header.classList.add("header-hidden");
-  } else {
-    header.classList.remove("header-hidden");
+  if (!("IntersectionObserver" in window)) {
+    elements.forEach(el => el.classList.add("visible"));
+    return;
   }
 
-  lastScrollY = window.scrollY;
-});
-
-/* ------------------------------------------------------------
-   HERO TEXT MICRO-ANIMATION
------------------------------------------------------------- */
-const heroHeading = document.querySelector(".hero-heading");
-
-if (heroHeading) {
-  const text = heroHeading.innerText;
-  heroHeading.innerHTML = "";
-
-  [...text].forEach((char, i) => {
-    const span = document.createElement("span");
-    span.innerText = char === " " ? "\u00A0" : char;
-    span.style.animationDelay = `${i * 25}ms`;
-    span.classList.add("hero-char");
-    heroHeading.appendChild(span);
+  const observer = new IntersectionObserver(onReveal, ANIMATION_CONFIG);
+  elements.forEach(el => {
+    el.classList.add("reveal");
+    observer.observe(el);
   });
 }
 
-/* ------------------------------------------------------------
-   BUTTON RIPPLE EFFECT
------------------------------------------------------------- */
-document.querySelectorAll(".btn").forEach(button => {
-  button.addEventListener("click", function (e) {
-    const ripple = document.createElement("span");
-    ripple.classList.add("ripple");
-
-    const rect = this.getBoundingClientRect();
-    ripple.style.left = `${e.clientX - rect.left}px`;
-    ripple.style.top  = `${e.clientY - rect.top}px`;
-
-    this.appendChild(ripple);
-
-    setTimeout(() => {
-      ripple.remove();
-    }, 600);
+/* ================= OBSERVER CALLBACK ================= */
+function onReveal(entries, observer) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
   });
+}
+
+/* ================= HOVER MICRO-ANIMATIONS ================= */
+document.addEventListener("mouseover", e => {
+  const card = e.target.closest(".course-card");
+  if (!card) return;
+  card.style.transform = "translateY(-8px)";
 });
 
-/* ------------------------------------------------------------
-   MOBILE PERFORMANCE SAFETY
------------------------------------------------------------- */
-let ticking = false;
-
-window.addEventListener("scroll", () => {
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      ticking = false;
-    });
-    ticking = true;
-  }
+document.addEventListener("mouseout", e => {
+  const card = e.target.closest(".course-card");
+  if (!card) return;
+  card.style.transform = "";
 });
 
-/* ------------------------------------------------------------
-   DEBUG
------------------------------------------------------------- */
-console.log("Animations system initialized");
+/* ================= BUTTON PRESS FEEDBACK ================= */
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".btn");
+  if (!btn) return;
+
+  btn.classList.add("pressed");
+  setTimeout(() => btn.classList.remove("pressed"), 150);
+});
+
+/* ================= REDUCED MOTION SUPPORT ================= */
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+if (prefersReducedMotion.matches) {
+  document.documentElement.classList.add("reduced-motion");
+}
+
+/* ================= SAFETY ================= */
+window.addEventListener("error", function (e) {
+  console.warn("Animation handled:", e.message);
+});
