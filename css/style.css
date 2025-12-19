@@ -1,91 +1,129 @@
-/* =============================================================
-   STYLE.CSS — FULL PREMIUM STYLING (ALL DEVICES)
-   Tutor: Aydin Mahmoudi
-   Purpose: Visual system, animations, dark/light mode
-   ============================================================= */
+/* ============================================================
+   STYLE.CSS — PROFESSIONAL IELTS TUTOR WEBSITE
+   Author: Aydin Mahmoudi
+   Design Goal: Premium, clean, academic, modern
+   Color Psychology: Trust, intelligence, calm confidence
+============================================================ */
 
-/* -------------------- CSS RESET -------------------- */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
+/* ================= ROOT VARIABLES ================= */
+:root {
+  --color-bg: #0e1320;
+  --color-bg-soft: #141a2e;
+  --color-surface: #1b2140;
+  --color-primary: #4f7cff;
+  --color-primary-soft: #7fa1ff;
+  --color-accent: #00d4ff;
+  --color-text: #e9ecf5;
+  --color-text-soft: #b7bdd9;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --transition-fast: 0.25s ease;
+  --transition-medium: 0.45s ease;
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.25);
+  --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* ================= LIGHT MODE ================= */
+body.light {
+  --color-bg: #f5f7fb;
+  --color-bg-soft: #eef1f8;
+  --color-surface: #ffffff;
+  --color-primary: #3459e6;
+  --color-primary-soft: #6c86f2;
+  --color-accent: #00a2c7;
+  --color-text: #10131a;
+  --color-text-soft: #5b647a;
+  --color-border: rgba(0, 0, 0, 0.08);
+}
+
+/* ================= RESET ================= */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #f6f7fb;
-  color: #1a1a1a;
-  line-height: 1.7;
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(180deg, var(--color-bg), var(--color-bg-soft));
+  color: var(--color-text);
+  line-height: 1.65;
   overflow-x: hidden;
 }
 
-/* -------------------- DARK MODE -------------------- */
-body.dark-mode {
-  background-color: #0f1220;
-  color: #e6e8f0;
+/* ================= GLOBAL ELEMENTS ================= */
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-body.dark-mode section {
-  background-color: transparent;
+img {
+  max-width: 100%;
+  display: block;
 }
 
-/* -------------------- LOADER -------------------- */
+.no-split {
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+/* ================= LOADER ================= */
 #global-loader {
   position: fixed;
   inset: 0;
-  background: linear-gradient(135deg, #1d2b64, #f8cdda);
+  background: radial-gradient(circle at center, #1b2140, #0e1320);
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.6s ease;
 }
 
 .loader-content {
   text-align: center;
-  color: white;
+  animation: fadeOut 1s ease 1.8s forwards;
 }
 
 .loader-title {
   display: block;
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
 .loader-sub {
-  margin-top: 12px;
-  opacity: 0.8;
+  display: block;
+  opacity: 0.7;
+  margin-top: 6px;
 }
 
-/* -------------------- HEADER -------------------- */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ================= HEADER ================= */
 #main-header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(14px);
   z-index: 1000;
-  transition: transform 0.4s ease, background 0.4s ease;
-}
-
-body.dark-mode #main-header {
-  background: rgba(15, 18, 32, 0.85);
-}
-
-.header-hidden {
-  transform: translateY(-100%);
+  backdrop-filter: blur(14px);
+  background: rgba(14, 19, 32, 0.75);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .header-wrapper {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px 24px;
+  margin: auto;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -98,26 +136,25 @@ body.dark-mode #main-header {
 }
 
 .logo-img {
-  height: 40px;
-  width: auto;
+  width: 42px;
 }
 
 .logo-text {
   font-weight: 800;
-  font-size: 1.1rem;
+  letter-spacing: 0.3px;
 }
 
-/* -------------------- NAV -------------------- */
+/* ================= NAVIGATION ================= */
 .main-nav {
   display: flex;
-  gap: 28px;
+  gap: 24px;
 }
 
 .nav-link {
-  text-decoration: none;
-  font-weight: 600;
-  color: inherit;
+  font-weight: 500;
+  color: var(--color-text-soft);
   position: relative;
+  transition: color var(--transition-fast);
 }
 
 .nav-link::after {
@@ -125,10 +162,15 @@ body.dark-mode #main-header {
   position: absolute;
   left: 0;
   bottom: -6px;
-  width: 0;
+  width: 0%;
   height: 2px;
-  background: #5b6cff;
-  transition: width 0.3s ease;
+  background: var(--color-primary);
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-text);
 }
 
 .nav-link:hover::after,
@@ -138,250 +180,213 @@ body.dark-mode #main-header {
 
 #nav-toggle {
   display: none;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   background: none;
   border: none;
+  color: var(--color-text);
 }
 
-/* -------------------- HERO -------------------- */
+/* ================= HERO ================= */
 #hero-section {
-  min-height: 100vh;
-  padding: 140px 24px 80px;
-  background: linear-gradient(120deg, #5b6cff, #9f7aea);
-  color: white;
   position: relative;
+  padding: 120px 20px 140px;
+  text-align: center;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.15);
+  background: radial-gradient(circle at top, rgba(79, 124, 255, 0.18), transparent 60%);
 }
 
 .hero-inner {
   max-width: 900px;
-  margin: 0 auto;
+  margin: auto;
   position: relative;
 }
 
 .hero-heading {
-  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
   font-weight: 900;
-  line-height: 1.1;
-}
-
-.hero-char {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: heroChar 0.6s forwards ease;
-}
-
-@keyframes heroChar {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  line-height: 1.15;
+  margin-bottom: 24px;
 }
 
 .hero-description {
-  margin-top: 24px;
-  font-size: 1.15rem;
-  max-width: 700px;
+  font-size: 1.1rem;
+  color: var(--color-text-soft);
+  margin-bottom: 36px;
 }
 
-.hero-actions {
-  margin-top: 40px;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-/* -------------------- BUTTONS -------------------- */
+/* ================= BUTTONS ================= */
 .btn {
-  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 14px 28px;
-  border-radius: 999px;
-  font-weight: 700;
-  text-decoration: none;
-  overflow: hidden;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast),
+              background var(--transition-fast);
 }
 
 .btn.primary {
-  background: white;
-  color: #5b6cff;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-soft));
+  color: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-strong);
 }
 
 .btn.secondary {
-  border: 2px solid white;
-  color: white;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn.secondary:hover {
+  background: var(--color-surface);
 }
 
 .btn.large {
   font-size: 1.05rem;
 }
 
-.ripple {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: rgba(255,255,255,0.6);
-  border-radius: 50%;
-  transform: scale(0);
-  animation: ripple 0.6s ease-out;
-}
-
-@keyframes ripple {
-  to {
-    transform: scale(12);
-    opacity: 0;
-  }
-}
-
-/* -------------------- SECTIONS -------------------- */
-section {
-  padding: 100px 24px;
-}
-
+/* ================= SECTIONS ================= */
 .section-container {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: auto;
+  padding: 100px 20px;
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-size: 2.1rem;
   font-weight: 800;
-  margin-bottom: 32px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .section-text {
   max-width: 800px;
-  margin-bottom: 22px;
-  font-size: 1.05rem;
+  margin: auto;
+  text-align: center;
+  color: var(--color-text-soft);
+  margin-bottom: 20px;
 }
 
-/* -------------------- COURSES -------------------- */
+/* ================= COURSES ================= */
 .courses-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
+  gap: 24px;
+  margin-top: 60px;
 }
 
 .course-card {
-  background: white;
-  padding: 28px;
-  border-radius: 22px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-body.dark-mode .course-card {
-  background: #1a1e36;
+  background: var(--color-surface);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast);
 }
 
 .course-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-strong);
 }
 
 .course-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 12px;
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 1.25rem;
 }
 
-/* -------------------- VALUE LIST -------------------- */
+/* ================= VALUE ================= */
 .value-list {
+  max-width: 720px;
+  margin: 40px auto 0;
+  padding: 0;
   list-style: none;
-  max-width: 700px;
 }
 
 .value-list li {
-  margin-bottom: 14px;
-  padding-left: 24px;
-  position: relative;
-}
-
-.value-list li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  color: #5b6cff;
-}
-
-/* -------------------- CTA -------------------- */
-#final-cta-section {
-  background: linear-gradient(120deg, #1d2b64, #5b6cff);
-  color: white;
-}
-
-.cta-box {
-  max-width: 800px;
-  margin: 0 auto;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
   text-align: center;
 }
 
-/* -------------------- SETTINGS -------------------- */
+/* ================= CTA ================= */
+#final-cta-section {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  padding: 90px 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.cta-box h2 {
+  font-size: 2.4rem;
+  margin-bottom: 14px;
+}
+
+.cta-box p {
+  opacity: 0.9;
+  margin-bottom: 28px;
+}
+
+/* ================= SETTINGS ================= */
 #settings-toggle {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  font-size: 1.6rem;
-  background: white;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.2rem;
+  padding: 14px;
   border-radius: 50%;
-  width: 56px;
-  height: 56px;
   border: none;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
   cursor: pointer;
 }
 
 #settings-panel {
   position: fixed;
-  bottom: 96px;
-  right: 24px;
-  width: 260px;
-  background: white;
-  border-radius: 18px;
+  bottom: 90px;
+  right: 20px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
   padding: 20px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
-  transform: translateY(20px);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.4s ease;
+  width: 220px;
+  box-shadow: var(--shadow-strong);
+  display: none;
 }
 
-#settings-panel.open {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
+#settings-panel h4 {
+  margin-top: 0;
 }
 
-body.dark-mode #settings-panel {
-  background: #1a1e36;
-}
-
-/* -------------------- REVEAL ANIMATIONS -------------------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-/* -------------------- FOOTER -------------------- */
+/* ================= FOOTER ================= */
 #main-footer {
+  padding: 30px 20px;
   text-align: center;
-  padding: 40px 24px;
   font-size: 0.9rem;
+  color: var(--color-text-soft);
+  border-top: 1px solid var(--color-border);
 }
 
-/* -------------------- MOBILE -------------------- */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
-  .main-nav { display: none; }
-  #nav-toggle { display: block; }
-  .hero-actions { flex-direction: column; }
+  .main-nav {
+    display: none;
+  }
+
+  #nav-toggle {
+    display: block;
+  }
+
+  .hero-heading {
+    font-size: 2.2rem;
+  }
 }
